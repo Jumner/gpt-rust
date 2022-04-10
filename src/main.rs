@@ -82,10 +82,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 		return Ok(());
 	}
 	let prompt = prompt.unwrap();
-	let spinner = Spinner::new(
-		Spinners::SimpleDotsScrolling,
-		"Processing".green().to_string(),
-	);
+	let spinner = Spinner::new(Spinners::Material, "Processing".green().to_string());
 	let request = GptRequest { prompt, ..args };
 	let body = Body::from(serde_json::to_vec(&request)?);
 	debug!("Request: {:?}", body);
