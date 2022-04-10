@@ -20,11 +20,11 @@ struct GptRequest {
 	#[clap(short, long, default_value_t = 0.3)]
 	temperature: f64,
 	/// Max tokens to use
-	#[clap(short, long, default_value_t = 5)]
+	#[clap(short, long, default_value_t = 50)]
 	max_tokens: usize,
 	/// How Many Responses to generate
 	#[clap(short, long, default_value_t = 1)]
-	n: usize,
+	n: u8,
 	/// Stop String
 	#[clap(short, long, default_value = "")]
 	stop: String,
@@ -43,16 +43,6 @@ struct GptResponse {
 	model: Option<String>,
 	choices: Option<Vec<GptChoice>>,
 }
-
-// #[derive(Serialize, Debug)]
-// struct GptRequest {
-// prompt: String,
-// temp: f64,
-// max_tokens: usize,
-// top_p: usize,
-// frequency_penalty: f64,
-// presence_penalty: f64,
-// }
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
